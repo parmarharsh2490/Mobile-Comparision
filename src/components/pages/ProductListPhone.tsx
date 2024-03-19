@@ -29,7 +29,7 @@ const ProductListPhone = ({
   storage,
   camera,
   fingerprint,
-  colors,
+//   colors,
   operating_system,
   antutu_score,
   charging_speed,

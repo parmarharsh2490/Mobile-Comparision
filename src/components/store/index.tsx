@@ -2,6 +2,7 @@ import React, { ReactNode, createContext, useState, useEffect } from "react";
 import data from './../../data/data.json';
 
 interface Phone {
+  image : string;
   model: string;
   display_type: string;
   display_size: string;

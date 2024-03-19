@@ -7,7 +7,7 @@ const WishListPage = () => {
   return (
     <div>
       {
-        wishListPhones.map((phone,index)=>(
+        wishListPhones.map((phone)=>(
           <div>
             <ProductListPhone {...phone}></ProductListPhone>
           </div>

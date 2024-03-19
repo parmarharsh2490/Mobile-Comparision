@@ -1,4 +1,3 @@
-import React from 'react'
 import Navigation from '../Navigation'
 import PhoneDetails from '../PhoneDetails'
 import Phone from '../PhoneList'

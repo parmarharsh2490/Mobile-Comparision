@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import ProductListPhone from './ProductListPhone'
 import iphonex from './../../Images/iphone x.jpg'
 import data from './../../data/data.json'

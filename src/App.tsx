@@ -1,14 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { MdDelete } from "react-icons/md";
 
-import data from './data/data.json';
-import { Button } from './components/ui/button';
-import './App.css'
-import PhoneDetails from './components/PhoneDetails';
-import InputPhone from './components/Input';
-import MobileProvider from './components/store';
-import Phone from './components/PhoneList';
-import Navigation from './components/Navigation';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import ProfilePage from './components/pages/ProfilePage';
@@ -17,6 +7,7 @@ import WishListPage from './components/pages/WishListPage';
 import HistoryPage from './components/pages/HistoryPage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
+import MobileProvider from './components/store';
 
 const App = () => {
 

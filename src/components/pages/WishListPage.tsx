@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import  { useContext } from 'react'
 import { MobileContext } from '../store'
 import ProductListPhone from './ProductListPhone'
 

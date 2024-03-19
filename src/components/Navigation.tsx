@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import logo from './../Images/logo.png.png'
 import { Button } from './ui/button'
 import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 const Navigation = () => {
-    const [isLogin,setIsLogin] = useState(true);
+    const [isLogin,setIsLogin] = useState<boolean>(true);
   return (
     <nav className='mb-2'>
       <ul className='flex flex-row items-center justify-start px-7  relative mt-2'>
@@ -22,7 +22,7 @@ const Navigation = () => {
         }
         <Link to={'/profile'} className='absolute top-0 right-24 flex mt-2 border border-b-black border-t-white border-x-white'>
             <p className='m-1'><CgProfile size={'1.4rem'} /></p>
-            <p className='mx-1 font-semibold text-1xl m-[3px]'>Hello ,  Harsh Parmar</p>
+            <p className='mx-1 font-semibold text-1xl m-[3px]' onClick={()=>{setIsLogin(!isLogin)}}>Hello ,  Harsh Parmar</p>
         </Link>
       </ul>
     </nav>

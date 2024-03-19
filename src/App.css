@@ -1,0 +1,6 @@
+.cardContent p{
+  border-bottom:  2px solid grey;
+  padding: 5px;
+  margin: 5px 5px;
+  /* max-height: min-content; */
+}

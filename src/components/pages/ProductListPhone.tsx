@@ -29,7 +29,7 @@ const ProductListPhone = ({
   storage,
   camera,
   fingerprint,
-//   colors,
+  colors,
   operating_system,
   antutu_score,
   charging_speed,
@@ -60,7 +60,7 @@ const ProductListPhone = ({
         </p>
         <p>Camera : {camera}</p>
         <p>fingerprint : {fingerprint}</p>
-        {/* <p>colors : {colors}</p> */}
+        <p>colors : {colors}</p>
         <p>operating_system : {operating_system}</p>
         <p>Charger : {charger}</p>
        </div>

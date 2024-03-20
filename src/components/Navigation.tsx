@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import logo from './../Images/logo.png.png'
 import { Button } from './ui/button'
 import { CgProfile } from "react-icons/cg";

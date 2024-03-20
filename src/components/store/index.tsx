@@ -52,10 +52,9 @@ interface MobileContextData {
   showPhones : (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleWishList : (phone : Phone) => void,
   wishListPhones : Phone[],
-  isLogin : boolean,
   user: User; 
   handleSignup : (newUser : SignupUser) => void,
-  handleLogin : (user : LoginUser) => void,
+  handleLogin : (loginUser : LoginUser) => void,
 }
 
 export const MobileContext = createContext<MobileContextData>({
@@ -68,7 +67,6 @@ export const MobileContext = createContext<MobileContextData>({
   showPhones : () => {},
   handleWishList : () => {},
   wishListPhones : [],
-  isLogin : false,
   user : {
     username : '',
     email : '',
@@ -84,7 +82,6 @@ export interface Props {
 
 export const MobileProvider = ({ children }: Props) => {
   const [wishListPhones,setWishListPhones] = useState<Phone[]>([]);
-  const [isLogin,setIsLogin] = useState<boolean>(true);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [showList, setShowList] = useState<boolean>(false);
   const [showPhoneList, setShowPhoneList] = useState<Phone[]>([]);
@@ -98,18 +95,16 @@ export const MobileProvider = ({ children }: Props) => {
    setWishListPhones([...wishListPhones,Phone])
   }
   const handleSignup = (newUser : SignupUser) => {
-    console.log(newUser);
     setUser({
         username: newUser.name,
         email: newUser.email,
         password: newUser.password
     });
-    console.log('user' + user);
     
 }
 
-  const handleLogin = (user : User) => {
-    console.log(user);
+  const handleLogin = (loginUser : LoginUser) => {
+    console.log(loginUser);
   }
   const showPhones = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -138,7 +133,7 @@ export const MobileProvider = ({ children }: Props) => {
   }, [filteredPhones]);
 
   return (
-    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones,isLogin,user,handleSignup,handleLogin}}>
+    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones,user,handleSignup,handleLogin}}>
       {children}
     </MobileContext.Provider>
   );

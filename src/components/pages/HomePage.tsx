@@ -11,7 +11,8 @@ const HomePage = () => {
      <PhoneDetails></PhoneDetails>
 <Phone></Phone>
 <InputPhone></InputPhone>
-    </div>    </div>
+    </div>    
+    </div>
   )
 }
 

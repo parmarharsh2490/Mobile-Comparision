@@ -27,7 +27,7 @@ const InputPhone = () => {
       <p key={index} onClick={()=>{addPhone(phone)}}>{phone.model}</p>
     ))}
   </CardContent>
-)};
+)}
       </Card>  
       )
     }

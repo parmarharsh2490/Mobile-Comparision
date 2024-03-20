@@ -1,8 +1,9 @@
+import LoginForm from "../auth/login-form"
 
 const LoginPage = () => {
   return (
-    <div>
-      LoginPage
+    <div className="flex item-center justify-center mt-44">
+      <LoginForm ></LoginForm>
     </div>
   )
 }

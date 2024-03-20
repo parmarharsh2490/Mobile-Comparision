@@ -25,6 +25,23 @@ interface Phone {
   in_the_box: string[];
 }
 
+interface User {
+  // Define properties for user details
+  username: string;
+  email: string;
+  password : string,
+  // Add other relevant properties
+}
+interface LoginUser{
+  email : string;
+  password : string
+}
+interface SignupUser{
+  email : string;
+  password : string;
+  confirmPassword : string;
+  name : string;
+}
 interface MobileContextData {
   filteredPhones: Phone[];
   addPhone: (phone: Phone) => void;
@@ -35,6 +52,10 @@ interface MobileContextData {
   showPhones : (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleWishList : (phone : Phone) => void,
   wishListPhones : Phone[],
+  isLogin : boolean,
+  user: User; 
+  handleSignup : (newUser : SignupUser) => void,
+  handleLogin : (user : LoginUser) => void,
 }
 
 export const MobileContext = createContext<MobileContextData>({
@@ -47,6 +68,14 @@ export const MobileContext = createContext<MobileContextData>({
   showPhones : () => {},
   handleWishList : () => {},
   wishListPhones : [],
+  isLogin : false,
+  user : {
+    username : '',
+    email : '',
+    password : ''
+  },
+  handleSignup : () => {},
+  handleLogin : () => {},
 });
 
 export interface Props {
@@ -54,14 +83,33 @@ export interface Props {
 }
 
 export const MobileProvider = ({ children }: Props) => {
-  const [wishListPhones,setWishListPhones] = useState<Phone[]>([])
+  const [wishListPhones,setWishListPhones] = useState<Phone[]>([]);
+  const [isLogin,setIsLogin] = useState<boolean>(true);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [showList, setShowList] = useState<boolean>(false);
   const [showPhoneList, setShowPhoneList] = useState<Phone[]>([]);
   const [showInput, setShowInput] = useState<boolean>(true);
-
+  const [user, setUser] = useState<User>({
+    username : '',
+    email : '',
+    password : ''
+  }); 
   const handleWishList = (Phone : Phone) => {
    setWishListPhones([...wishListPhones,Phone])
+  }
+  const handleSignup = (newUser : SignupUser) => {
+    console.log(newUser);
+    setUser({
+        username: newUser.name,
+        email: newUser.email,
+        password: newUser.password
+    });
+    console.log('user' + user);
+    
+}
+
+  const handleLogin = (user : User) => {
+    console.log(user);
   }
   const showPhones = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -90,7 +138,7 @@ export const MobileProvider = ({ children }: Props) => {
   }, [filteredPhones]);
 
   return (
-    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones}}>
+    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones,isLogin,user,handleSignup,handleLogin}}>
       {children}
     </MobileContext.Provider>
   );

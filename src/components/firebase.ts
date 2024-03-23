@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyDml7qdZytZy6yDoLVL2iwqhfN54N4AiIQ",
   authDomain: "mobile-comparison-2490.firebaseapp.com",

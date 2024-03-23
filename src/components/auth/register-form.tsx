@@ -16,16 +16,18 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { z } from "zod";
 import { useFormState } from 'react-hook-form'
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import { MobileContext } from "../store/index.tsx";
 import { useToast } from "../ui/use-toast.ts";
 import { Toaster } from "../ui/toaster.tsx";
+import { useNavigate } from "react-router-dom";
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
-  const {handleSignup} = useContext(MobileContext);
-  const navigate = useNavigate()
-const [loading, setLoading] = useState(false);
+  const {handleSignup,loading,showSignupSuccessToast} = useContext(MobileContext);
+  console.log(showSignupSuccessToast);
+  
+
 const form = useForm({
   resolver: zodResolver(RegisterSchema),
   defaultValues: {
@@ -37,18 +39,22 @@ const form = useForm({
 });
 
 const onSubmit = (data: z.infer<typeof RegisterSchema>) => {
-  // setUserName(data.name)
-  setLoading(true); // Set loading status to true when form is submitted
-  console.log(data);
   handleSignup(data);
-  // Simulate login process with delay
-  setTimeout(() => {
-      setLoading(false); // Reset loading status after login process completes
-      navigate('/home'); // Navigate to the home page after successful login
-  }, 2000);
-};
 
-const { isSubmitting } = useFormState(form); // Change this line
+};
+useEffect(() => {
+  if (showSignupSuccessToast) {
+    toast({
+      title: "Congratulations",
+      description: "Successfully Signed Up",
+    });
+   setTimeout(() => {
+     navigate('/home');
+   }, 2000);
+  }  
+}, [showSignupSuccessToast, toast]);
+
+const { isSubmitting } = useFormState(form); 
 
 return (
   <CardWrapper
@@ -117,12 +123,7 @@ return (
           )}
         />
       </div>
-      <Button type="submit"  onClick={() => {
-        toast({
-          title: "Congratulation",
-          description: ' Successfully Signup',
-        })
-      }} className="w-full" disabled={isSubmitting}>
+      <Button type="submit"  className="w-full" disabled={isSubmitting}>
         {loading ? "Loading..." : "Register"}
       </Button>
       <Toaster></Toaster>

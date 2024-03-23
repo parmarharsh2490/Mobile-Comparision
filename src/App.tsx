@@ -6,6 +6,8 @@ import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
 import MobileProvider from './components/store';
 import './App.css'
+
+
 const App = () => {
 
   return (

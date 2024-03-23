@@ -1,6 +1,8 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 import data from './../../data/data.json';
-
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {app} from './../firebase'
+import { useNavigate } from "react-router-dom";
 interface Phone {
   image : string;
   model: string;
@@ -55,6 +57,8 @@ interface MobileContextData {
   user: User; 
   handleSignup : (newUser : SignupUser) => void,
   handleLogin : (loginUser : LoginUser) => void,
+  showSignupSuccessToast : boolean,
+  loading : boolean,
 }
 
 export const MobileContext = createContext<MobileContextData>({
@@ -74,6 +78,8 @@ export const MobileContext = createContext<MobileContextData>({
   },
   handleSignup : () => {},
   handleLogin : () => {},
+  showSignupSuccessToast : false,
+  loading : false,
 });
 
 export interface Props {
@@ -81,6 +87,10 @@ export interface Props {
 }
 
 export const MobileProvider = ({ children }: Props) => {
+  const auth = getAuth(app);
+  // const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [showSignupSuccessToast,setShowSignupSuccessToast] = useState<boolean>(false);
   const [wishListPhones,setWishListPhones] = useState<Phone[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<Phone[]>([]);
   const [showList, setShowList] = useState<boolean>(false);
@@ -92,19 +102,46 @@ export const MobileProvider = ({ children }: Props) => {
     password : ''
   }); 
   const handleWishList = (Phone : Phone) => {
-   setWishListPhones([...wishListPhones,Phone])
+   if(wishListPhones.indexOf(Phone) === -1){
+    setWishListPhones([...wishListPhones, Phone]);
   }
-  const handleSignup = (newUser : SignupUser) => {
-    setUser({
-        username: newUser.name,
-        email: newUser.email,
-        password: newUser.password
-    });
-    
+}
+const handleSignup = async (newUser : SignupUser) => {
+  setLoading(true);
+  try{
+    const userSignupData = await createUserWithEmailAndPassword(auth,newUser.email,newUser.password);
+    setShowSignupSuccessToast(true);
+    setTimeout(() => {
+      setShowSignupSuccessToast(false);
+    }, 2000);
+    // navigate('/home');
+  }
+  catch{
+    setShowSignupSuccessToast(false);
+    alert('Account has been already created');
+  }
+  finally{
+    setLoading(false);
+  }
 }
 
-  const handleLogin = (loginUser : LoginUser) => {
-    console.log(loginUser);
+  const handleLogin = async (loginUser : LoginUser) => {
+    setLoading(true);
+    try{
+    const userLoginData = await signInWithEmailAndPassword(auth,loginUser.email,loginUser.password);
+    setShowSignupSuccessToast(true);
+    setTimeout(() => {
+      setShowSignupSuccessToast(false);
+    }, 2000);
+    // navigate('/home');
+  }
+  catch{
+    setShowSignupSuccessToast(false);
+    alert('Account has not been already created Or Wrong Password');
+  }
+  finally{
+    setLoading(false);
+  }
   }
   const showPhones = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -133,7 +170,7 @@ export const MobileProvider = ({ children }: Props) => {
   }, [filteredPhones]);
 
   return (
-    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones,user,handleSignup,handleLogin}}>
+    <MobileContext.Provider value={{ filteredPhones, addPhone, deletePhone, showInput, showList, showPhoneList , showPhones,handleWishList,wishListPhones,user,handleSignup,handleLogin,showSignupSuccessToast,loading}}>
       {children}
     </MobileContext.Provider>
   );

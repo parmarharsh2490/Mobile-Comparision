@@ -25,8 +25,6 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const {handleSignup,loading,showSignupSuccessToast} = useContext(MobileContext);
-  console.log(showSignupSuccessToast);
-  
 
 const form = useForm({
   resolver: zodResolver(RegisterSchema),

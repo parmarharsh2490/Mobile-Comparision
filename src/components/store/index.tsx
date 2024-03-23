@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useState, useEffect } from "react";
 import data from './../../data/data.json';
 import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import {app} from './../firebase'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 interface Phone {
   image : string;
   model: string;
@@ -96,11 +96,16 @@ export const MobileProvider = ({ children }: Props) => {
   const [showList, setShowList] = useState<boolean>(false);
   const [showPhoneList, setShowPhoneList] = useState<Phone[]>([]);
   const [showInput, setShowInput] = useState<boolean>(true);
-  const [user, setUser] = useState<User>({
+  const user = {
     username : '',
     email : '',
     password : ''
-  }); 
+  }; 
+  // const [user, setUser] = useState<User>({
+  //   username : '',
+  //   email : '',
+  //   password : ''
+  // }); 
   const handleWishList = (Phone : Phone) => {
    if(wishListPhones.indexOf(Phone) === -1){
     setWishListPhones([...wishListPhones, Phone]);
@@ -109,7 +114,7 @@ export const MobileProvider = ({ children }: Props) => {
 const handleSignup = async (newUser : SignupUser) => {
   setLoading(true);
   try{
-    const userSignupData = await createUserWithEmailAndPassword(auth,newUser.email,newUser.password);
+     await createUserWithEmailAndPassword(auth,newUser.email,newUser.password);
     setShowSignupSuccessToast(true);
     setTimeout(() => {
       setShowSignupSuccessToast(false);
@@ -128,7 +133,7 @@ const handleSignup = async (newUser : SignupUser) => {
   const handleLogin = async (loginUser : LoginUser) => {
     setLoading(true);
     try{
-    const userLoginData = await signInWithEmailAndPassword(auth,loginUser.email,loginUser.password);
+     await signInWithEmailAndPassword(auth,loginUser.email,loginUser.password);
     setShowSignupSuccessToast(true);
     setTimeout(() => {
       setShowSignupSuccessToast(false);

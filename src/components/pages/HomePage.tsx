@@ -1,7 +1,7 @@
 import Navigation from '../Navigation'
-import PhoneDetails from '../PhoneDetails'
-import Phone from '../PhoneList'
-import InputPhone from '../Input'
+// import PhoneDetails from '../PhoneDetails'
+// import Phone from '../PhoneList'
+// import InputPhone from '../Input'
 import Layout from '../table/layout'
 const HomePage = () => {
   return (

@@ -9,7 +9,7 @@ const PhonesListPage = () => {
   const {showPhones,showPhoneList} = useContext(MobileContext)
   return (
     <>
-      <div className='flex item-center'>
+      <div className='flex item-center '>
       <Link to={'/home'} className='text-center relative top-1  left-28 border border-b-black border-x-white border-t-white text-2xl mt-2'>Home</Link>
       <Link to={'/phonesList'} className='text-center relative top-1 left-2/4 border border-b-black border-x-white border-t-white text-2xl mt-2'>PhoneList</Link>
       <Input className=' absolute top-2 right-5 w-1/5 left-auto border border-gray-800 outline-none active:outline:none active:border-none' onChange={showPhones}></Input>

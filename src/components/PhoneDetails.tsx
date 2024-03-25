@@ -6,11 +6,11 @@ import {
   } from "@/components/ui/card";
 const PhoneDetails = () => {
   return (
-    <Card className='flex justify-start items-center flex-col w-3/12'>
-    <CardHeader>
-      <CardTitle>Mobile Phone</CardTitle>
+    <Card className='flex justify-start items-center flex-col w-3/5'>
+    <CardHeader >
+      <CardTitle className=" text-lg text-wrap sm:text-xl md:text-3xl">Mobile Phone</CardTitle>
     </CardHeader>
-    <CardContent className='text-xl cardContent'>
+    <CardContent className=' sm:text-base  md:text-lg text-xs lg:text-xl cardContent'>
       <p>Display Type</p>
       <p>Display Size</p>
       <p>RAM / STORAGE</p>

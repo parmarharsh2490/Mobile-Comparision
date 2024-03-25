@@ -14,19 +14,21 @@ const Phone = () => {
   return (
     <>
        {filteredPhones.length > 0 && filteredPhones.map((phone, index) => (
-        <Card key={index} className='w-3/12'>
+        <Card key={index} className=' w-full h-full sm:text-sm text-xs md:text-lg lg:text-xl'>
           <CardHeader>
-            <CardTitle className='flex justify-around'>
-              <p className='inline-block mx-3'>{phone?.model}</p>
-              <Button className='m-0 px-3 h-6 -mb-5' onClick={()=>{handleWishList(phone)}}>
+            <CardTitle className='flex sm:justify-around flex-col sm:flex-row'>
+              <p className='inline-block mx-3 sm:text-base  md:text-lg text-base lg:text-xl'>{phone?.model}</p>
+             <div className='flex items-center justify-start'>
+             <Button className='h-5 w-3 mx-3' onClick={()=>{handleWishList(phone)}}>
               <p className=''> <FaHeart /></p> 
               </Button>
-              <Button className='m-0 px-3 h-6 -mb-5' onClick={()=>{deletePhone(phone.model)}}>
+              <Button className=' h-5 w-3' onClick={()=>{deletePhone(phone.model)}}>
               <p className=''><MdDelete/></p>
               </Button>
+             </div>
             </CardTitle>
           </CardHeader>
-          <CardContent className='text-xl cardContent'>
+          <CardContent className='sm:text-base  md:text-lg text-xs lg:text-xll cardContent'>
             <p className='border border-b-2 border-x-0 border-t-0'>{phone.display_type}</p>
             <p>{phone.display_size}</p>
             <p>{phone.ram} / {phone.storage}</p>

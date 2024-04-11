@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import data from '../../data/data.json'
+// import data from '../../data/data.json'
 import  './Layout.css'
 import { MobileContext } from '../store';
 import { Button } from '../ui/button';

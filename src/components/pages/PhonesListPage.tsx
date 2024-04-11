@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ProductListPhone from './ProductListPhone';
-import iphonex from './../../Images/iphone x.jpg';
+// import iphonex from './../../Images/iphone x.jpg';
 import data from './../../data/data.json';
 import { Input } from '../ui/input';
 import { MobileContext } from '../store';
@@ -24,7 +24,7 @@ const PhonesListPage = () => {
       <div>
         {showPhoneList.length !== 0 ? (
           showPhoneList.map((phone) => (
-            <ProductListPhone key={phone.id} {...phone} />
+            <ProductListPhone key={phone.antutu_score} {...phone} />
           ))
         ) : (
           data.map((phone) => (

@@ -2,7 +2,7 @@ import Navigation from '../Navigation'
 // import PhoneDetails from '../PhoneDetails'
 // import Phone from '../PhoneList'
 import InputPhone from '../Input'
-import Layout from '../table/layout'
+import PhoneDetailsTable from '../PhoneDetailsTable'
 const HomePage = () => {
   return (
     <div>
@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className=' flex sm:text-sm sm:border border-black md:text-lg lg:text-xl'>
      {/* <PhoneDetails></PhoneDetails>
 <Phone></Phone> */}
-<Layout></Layout>
+<PhoneDetailsTable></PhoneDetailsTable>
 <InputPhone></InputPhone>
     </div>    
     </div>

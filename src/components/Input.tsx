@@ -14,10 +14,10 @@ const InputPhone = () => {
     <>
     {
       showInput && (
-        <Card className='min-h-96 max-h-96'>
+        <Card className='w-2/4 overflow-hidden sm:text-xl  m-0 p-0'>
         <CardHeader>
           <CardTitle>
-            <Input className='w-2/3 inline-block mx-2' onChange={showPhones} />
+            <Input className='inline-block max-w-48' onChange={showPhones} />
             <Button>Add</Button>
           </CardTitle>
         </CardHeader>

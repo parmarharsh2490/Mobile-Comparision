@@ -171,7 +171,7 @@ const handleSignup = async (newUser : SignupUser) => {
   };
 
   useEffect(() => {
-    setShowInput(filteredPhones.length < 3);
+    setShowInput(filteredPhones.length < 2);
   }, [filteredPhones]);
 
   return (

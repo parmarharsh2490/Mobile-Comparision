@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface Props {
   image: string;
   model: string;
@@ -21,6 +23,7 @@ interface Props {
   date_first_available: string;
   in_the_box: string[];
 }
+
 const ProductListPhone = ({
   image,
   model,
@@ -45,36 +48,32 @@ const ProductListPhone = ({
   processor,
 }: Props) => {
   return (
-    <div className="flex items-center my-3">
-      <div className="image">
-        <img src={image} height={"350px"} width={"350px"} alt="" />
+    <div className='grid grid-cols-3 items-center'>
+      <div>
+        <img src={image} className='w-full h-full ' alt="Phone" />
       </div>
-      <div id="phoneDetails" className="flex py-5 text-xl my-3 m-9 items-center justify-around">
-       <div className="border border-grey-300 p-3 my-3 mr-14">
-       <p>Model : {model}</p>
-        <p>Price : {price}</p>
-        <p>Processor : {processor}</p>
-        <p>Battery : {battery}</p>
-        <p>
-          Ram/Storage : {ram} / {storage}
-        </p>
-        <p>Camera : {camera}</p>
-        <p>fingerprint : {fingerprint}</p>
-        <p>colors : {colors}</p>
-        <p>operating_system : {operating_system}</p>
-        <p>Charger : {charger}</p>
-       </div>
-        <div className="border border-grey-300 p-3 my-3 mr-14">
-        <p>antutu_score : {antutu_score}</p>
-        <p>charging_speed : {charging_speed}</p>
-        <p>display_size : {display_size}</p>
-        <p>date_first_available : {date_first_available}</p>
-        <p>display_type : {display_type}</p>
-        <p>in_the_box : {in_the_box}</p>
-        <p>weight : {weight}</p>
-        <p>customer_ratings : {customer_ratings}</p>
-        <p>network_type : {network_type}</p>
-        </div>
+      <div className='border rounded-sm border-black m-2 text-xs md:text-xl md:p-2  lg:text-xl lg:p-3 xl:text-2xl '>
+        <p>Model: {model}</p>
+        <p>Price: {price}</p>
+        <p>Processor: {processor}</p>
+        <p>Battery: {battery}</p>
+        <p>Ram/Storage: {ram} / {storage}</p>
+        <p>Camera: {camera}</p>
+        <p>Fingerprint: {fingerprint}</p>
+        <p>Colors: {colors.join(', ')}</p>
+        <p>Operating System: {operating_system}</p>
+        <p>Charger: {charger}</p>
+      </div>
+      <div className='border rounded-sm border-black m-2 text-xs md:text-xl md:p-2  lg:text-xl lg:p-3 xl:text-2xl'>
+        <p>Antutu Score: {antutu_score}</p>
+        <p>Charging Speed: {charging_speed}</p>
+        <p>Display Size: {display_size}</p>
+        <p>Date First Available: {date_first_available}</p>
+        <p>Display Type: {display_type}</p>
+        <p>In the Box: {in_the_box.join(', ')}</p>
+        <p>Weight: {weight}</p>
+        <p>Customer Ratings: {customer_ratings}</p>
+        <p>Network Type: {network_type}</p>
       </div>
     </div>
   );

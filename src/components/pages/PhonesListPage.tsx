@@ -1,37 +1,39 @@
-import  { useContext } from 'react'
-import ProductListPhone from './ProductListPhone'
-import iphonex from './../../Images/iphone x.jpg'
-import data from './../../data/data.json'
-import { Input } from '../ui/input'
-import { MobileContext } from '../store'
-import { Link } from 'react-router-dom'
-const PhonesListPage = () => {
-  const {showPhones,showPhoneList} = useContext(MobileContext)
-  return (
-    <>
-      <div className='flex item-center '>
-      <Link to={'/home'} className='text-center relative top-1  left-28 border border-b-black border-x-white border-t-white text-2xl mt-2'>Home</Link>
-      <Link to={'/phonesList'} className='text-center relative top-1 left-2/4 border border-b-black border-x-white border-t-white text-2xl mt-2'>PhoneList</Link>
-      <Input className=' absolute top-2 right-5 w-1/5 left-auto border border-gray-800 outline-none active:outline:none active:border-none' onChange={showPhones}></Input>
-      </div>
-      
-   {showPhoneList.length !== 0 ? (<div className=''>
-      {
-        showPhoneList.map((phone)=>(
-          <ProductListPhone image={iphonex} model={phone.model} ram={phone.ram} storage={phone.storage} camera={phone.camera} price={phone.price}     fingerprint={phone.fingerprint} colors={phone.colors} operating_system={phone.operating_system} antutu_score={phone.antutu_score} charging_speed={phone.charging_speed} charger={phone.charger} display_size={phone.display_size} display_type={phone.display_type} date_first_available={phone.date_first_available} in_the_box={phone.in_the_box} weight={phone.weight} customer_ratings={phone.customer_ratings} network_type={phone.network_type} processor={phone.processor} battery={phone.battery}           />
-        ))
-      }
-    </div>)
-    :
-   ( <div>
-    {
-        data.map((phone)=>(
-          <ProductListPhone image={iphonex} model={phone.model} ram={phone.ram} storage={phone.storage} camera={phone.camera} price={phone.price}     fingerprint={phone.fingerprint} colors={phone.colors} operating_system={phone.operating_system} antutu_score={phone.antutu_score} charging_speed={phone.charging_speed} charger={phone.charger} display_size={phone.display_size} display_type={phone.display_type} date_first_available={phone.date_first_available} in_the_box={phone.in_the_box} weight={phone.weight} customer_ratings={phone.customer_ratings} network_type={phone.network_type} processor={phone.processor} battery={phone.battery}           />
-        ))
-      }
-    </div>)}
-    </>
-  )
-}
+import { useContext } from 'react';
+import ProductListPhone from './ProductListPhone';
+import iphonex from './../../Images/iphone x.jpg';
+import data from './../../data/data.json';
+import { Input } from '../ui/input';
+import { MobileContext } from '../store';
+import { Link } from 'react-router-dom';
 
-export default PhonesListPage
+const PhonesListPage = () => {
+  const { showPhones, showPhoneList } = useContext(MobileContext);
+
+  return (
+    <div>
+      <div className='flex items-center justify-around mb-4 '>
+        <Link to={'/home'} className="text-base md:text-lg lg:text-xl font-bold mr-4">Home</Link>
+        <Link to={'/phoneslist'} className="text-base md:text-lg lg:text-xl font-bold hidden md:block">PhoneList</Link>
+      <Input
+          className="w-auto sm:w-64 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-indigo-500"
+          placeholder="Search Phones..."
+          maxLength={50} // Set maximum length
+          onChange={showPhones}
+        />
+        </div>
+      <div>
+        {showPhoneList.length !== 0 ? (
+          showPhoneList.map((phone) => (
+            <ProductListPhone key={phone.id} {...phone} />
+          ))
+        ) : (
+          data.map((phone) => (
+            <ProductListPhone key={phone.id} {...phone} />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default PhonesListPage;

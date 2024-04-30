@@ -7,20 +7,20 @@ const PhoneDetailsTable = () => {
   const { filteredPhones, deletePhone, handleWishList } = useContext(MobileContext);
 
   return (
-    <div className="overflow-x-auto">
+    <div className=" border border-red-800">
       <table className="">
         <thead>
-          <tr>
-            <th className="p-2 text-center">Model</th>
-            {filteredPhones.map((phone) => (
-              <th key={phone.model} className="p-2 text-center">
-                <div className="flex flex-col border border-e-black items-center justify-center">
-                  <p className=''>{phone.model}</p>
-                  <div className="flex justify-center mt-2">
-                    <button  onClick={() => handleWishList(phone)} className="ml-2 -mt-1">
+          <tr className='border border-r-emerald-600'>
+            <th className="px-4 py-2">Model</th>
+            {filteredPhones.map((phone, index) => (
+              <th key={index} className="px-4 py-2">
+                <div>
+                  <p>{phone.model}</p>
+                  <div>
+                    <button onClick={() => handleWishList(phone)} className="text-blue-500">
                       <FaHeart />
                     </button>
-                    <button onClick={() => deletePhone(phone.model)} className='ml-2 -mt-1'>
+                    <button onClick={() => deletePhone(phone.model)} className="text-red-500">
                       <MdDelete />
                     </button>
                   </div>
@@ -31,111 +31,111 @@ const PhoneDetailsTable = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="p-2 text-center">Display Type</td>
+            <td className="px-4 py-2">Display Type</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.display_type}</td>
+              <td key={index} className="px-4 py-2">{phone.display_type}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Display Size</td>
+            <td className="px-4 py-2">Display Size</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2 text-center">{phone.display_size}</td>
+              <td key={index} className="px-4 py-2">{phone.display_size}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">RAM</td>
+            <td className="px-4 py-2">RAM</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.ram}</td>
+              <td key={index} className="px-4 py-2">{phone.ram}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Storage</td>
+            <td className="px-4 py-2">Storage</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.storage}</td>
+              <td key={index} className="px-4 py-2">{phone.storage}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Price</td>
+            <td className="px-4 py-2">Price</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.price}</td>
+              <td key={index} className="px-4 py-2">{phone.price}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Processor</td>
+            <td className="px-4 py-2">Processor</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.processor}</td>
+              <td key={index} className="px-4 py-2">{phone.processor}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Battery</td>
+            <td className="px-4 py-2">Battery</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.battery}</td>
+              <td key={index} className="px-4 py-2">{phone.battery}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Charger</td>
+            <td className="px-4 py-2">Charger</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.charger}</td>
+              <td key={index} className="px-4 py-2">{phone.charger}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Charging Speed</td>
+            <td className="px-4 py-2">Charging Speed</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.charging_speed}</td>
+              <td key={index} className="px-4 py-2">{phone.charging_speed}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Camera</td>
+            <td className="px-4 py-2">Camera</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.camera}</td>
+              <td key={index} className="px-4 py-2">{phone.camera}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Fingerprint</td>
+            <td className="px-4 py-2">Fingerprint</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.fingerprint}</td>
+              <td key={index} className="px-4 py-2">{phone.fingerprint}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Antutu Score</td>
+            <td className="px-4 py-2">Antutu Score</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.antutu_score}</td>
+              <td key={index} className="px-4 py-2">{phone.antutu_score}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Network Type</td>
+            <td className="px-4 py-2">Network Type</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.network_type}</td>
+              <td key={index} className="px-4 py-2">{phone.network_type}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Customer Ratings</td>
+            <td className="px-4 py-2">Customer Ratings</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.customer_ratings}</td>
+              <td key={index} className="px-4 py-2">{phone.customer_ratings}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Operating System</td>
+            <td className="px-4 py-2">Operating System</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.operating_system}</td>
+              <td key={index} className="px-4 py-2">{phone.operating_system}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Colors</td>
+            <td className="px-4 py-2">Colors</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.colors?.join(', ')}</td>
+              <td key={index} className="px-4 py-2">{phone.colors?.join(', ')}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Weight</td>
+            <td className="px-4 py-2">Weight</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.weight}</td>
+              <td key={index} className="px-4 py-2">{phone.weight}</td>
             ))}
           </tr>
           <tr>
-            <td className="p-2  text-center">Date First Available</td>
+            <td className="px-4 py-2">Date First Available</td>
             {filteredPhones.map((phone, index) => (
-              <td key={index} className="p-2  text-center">{phone.date_first_available}</td>
+              <td key={index} className="px-4 py-2">{phone.date_first_available}</td>
             ))}
           </tr>
         </tbody>
